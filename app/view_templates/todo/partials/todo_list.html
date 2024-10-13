@@ -1,0 +1,4 @@
+<!-- loop through the list of todos and display the details for each todo in the list -->
+{% for todo in todoList %}
+    {% include "/todo/partials/todo_li.html" ignore missing with context %}
+{% endfor %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "./common/head.html" ignore missing with context %}
+    <title>Home Page</title>
+</head>
+
+<body>
+    <!-- include navbar from partials -->
+    {% include "./common/nav.html" ignore missing with context %}
+
+    <h1>Dynamic content examples</h1>
+
+    <div class="m-5">
+        <h3> </> htmx button example</h3>
+        <!-- have a button POST a click via AJAX -->
+        <button hx-post="/clicked" hx-swap="outerHTML" class="btn btn-primary">
+            Click Me
+        </button>
+    </div>
+
+
+    <div class="m-5 timeBlock">
+        <h3>Server Time:</h3>
+        <h4 id="serverTime" hx-get="/server_time" hx-trigger="every 1s">{{serverTime}}</h4>
+    </div>
+
+    <div class="m-5 timeBlock">
+        <h3>Browser Time:</h3>
+        <h4 id="browserTime"></h4>
+    </div>
+
+    <!-- Load common CSS and JS -->
+    {% include "./common/dependencies.html" ignore missing with context %}
+    <script src="/static/js/browserTime.js"></script>
+</body>
+
+</html>

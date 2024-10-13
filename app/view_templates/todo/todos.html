@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "./common/head.html" ignore missing with context %}
+    <title>Home Page</title>
+</head>
+
+<body>
+    <!-- include navbar from partials -->
+    {% include "./common/nav.html" ignore missing with context %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="col-10">
+                <h5>Things to do this week</h5>
+                <!-- 
+                <div class="dropdown mb-4">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Filter
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" hx-get="/todos/all" hx-target="#todoList"
+                                hx-trigger="click">All</a></li>
+                        <li><a class="dropdown-item" hx-get="/todos/done" hx-target="#todoList"
+                                hx-trigger="click">Completed</a></li>
+                        <li><a class="dropdown-item" hx-get="/todos/todo" hx-target="#todoList">Still to do</a></li>
+                    </ul>
+                </div>
+                -->
+                
+                <ul id="todoList" class="list-group">
+                    <!-- Use a partial to display the list items-->
+                    {% include "/todo/partials/todo_list.html" ignore missing with context %}
+                </ul>
+                <div class="mt-3 mb-3">
+                    <!-- A form to add a new todo item via an Ajax call and Post request-->
+                    <!-- note the htmx attributes
+                        hx-post : the endpoint to where the fotm will be submitted to
+                        hx-target : where to insert returned content (the toDoList above)
+                        hx-swap : new items will be added just before he end of the (list) element.
+                     -->
+                    <form hx-post="/todo/" hx-target="#todoList" hx-swap="beforeend" hx-include="#inputItem">
+                        <div class="mb-3">
+                            <label for="inputItem" class="form-label">New To Do item</label>
+                            <input type="text" class="form-control" id="inputItem" name="item" required>
+
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Add New Item</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load common CSS and JS -->
+    {% include "./common/dependencies.html" ignore missing with context %}
+</body>
+
+</html>

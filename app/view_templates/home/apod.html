@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "../common/head.html" ignore missing with context %}
+    <title>NASA APOD Page</title>
+</head>
+
+<body>
+    <!-- include navbar from partials -->
+    {% include "../common/nav.html" ignore missing with context %}
+
+    <h1>NASA Astronomy Picture of the Day - {{ data.date }}</h1>
+ 
+    <figure class="figure">
+        <img src="{{ data.url }}" class="figure-img img-fluid rounded" alt="NASA Astronomy Picture of the Day">
+        <figcaption class="figure-caption">{{data.explanation}}.</figcaption>
+    </figure>
+
+    <!-- Load common CSS and JS -->
+    {% include "../common/dependencies.html" ignore missing with context %}
+</body>
+
+</html>

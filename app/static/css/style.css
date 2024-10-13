@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+h1 {
+    color: red;
+}
+
+#browserTime {
+    color: blue;
+}
+
+#serverTime {
+    color: green;
+}
+
+.timeBlock {
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+}
+
+.fade-me-out.htmx-swapping {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
