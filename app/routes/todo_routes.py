@@ -28,7 +28,6 @@ async def todos(request: Request, id: int):
     # note passing of parameters to the page
     return templates.TemplateResponse("todo/partials/todo_update_form.html", {"request": request, "todo": getTodo(id) })
 
-
 @router.post("/")
 def add_item(request: Request, item: str = Form(...)):
 
@@ -40,9 +39,7 @@ def add_item(request: Request, item: str = Form(...)):
 def update_item(request: Request, id: Annotated[int, Form()], details: Annotated[str, Form()], completed: Annotated[str, Form()] = ""):
     # get item value from the form POST data
 
-
     up_todo = updateTodo(id, details, completed)
-    print(up_todo.model_dump())
     return templates.TemplateResponse("todo/partials/todo_li.html", {"request": request, "todo": up_todo})
 
 @router.delete("/{id}")

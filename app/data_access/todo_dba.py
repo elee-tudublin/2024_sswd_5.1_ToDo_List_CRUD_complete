@@ -20,6 +20,7 @@ todos_list.append(t3)
 def dataGetTodoList() :
     return todos_list
 
+# return todo from the list
 def dataGetTodo(id : int) :
     return todos_list[id - 1]
 
