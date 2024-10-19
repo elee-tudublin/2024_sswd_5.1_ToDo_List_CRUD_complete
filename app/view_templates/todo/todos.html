@@ -19,22 +19,22 @@
             </div>
             <div class="col-10">
                 <h5>Things to do this week</h5>
-                <!-- 
+
                 <div class="dropdown mb-4">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Filter
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" hx-get="/todos/all" hx-target="#todoList"
-                                hx-trigger="click">All</a></li>
-                        <li><a class="dropdown-item" hx-get="/todos/done" hx-target="#todoList"
-                                hx-trigger="click">Completed</a></li>
-                        <li><a class="dropdown-item" hx-get="/todos/todo" hx-target="#todoList">Still to do</a></li>
+                        <li><a class="dropdown-item" hx-get="/todo/filter/all" hx-target="#todoList"
+                                hx-trigger="click" hx-swap="innerHTML">All</a></li>
+                        <li><a class="dropdown-item" hx-get="/todo/filter/done" hx-target="#todoList"
+                                hx-trigger="click" hx-swap="innerHTML">Completed</a></li>
+                        <li><a class="dropdown-item" hx-get="/todo/filter/todo" hx-target="#todoList" 
+                                hx-trigger="click" hx-swap="innerHTML">Still to do</a></li>
                     </ul>
                 </div>
-                -->
-                
+
                 <ul id="todoList" class="list-group">
                     <!-- Use a partial to display the list items-->
                     {% include "/todo/partials/todo_list.html" ignore missing with context %}

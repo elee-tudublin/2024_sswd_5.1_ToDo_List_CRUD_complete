@@ -17,16 +17,24 @@ templates = Jinja2Templates(directory="app/view_templates")
 # handle http get requests for the site root /
 # return the todos page
 @router.get("/", response_class=HTMLResponse)
-async def todos(request: Request):
+async def todos(request: Request, filter : str | None = "all"):
 
     # note passing of parameters to the page
-    return templates.TemplateResponse("todo/todos.html", {"request": request, "todoList": getAllTodos() })
+    return templates.TemplateResponse("todo/todos.html", {"request": request, "todoList": getAllTodos(), "filter": "all" })
 
 @router.get("/update/{id}", response_class=HTMLResponse)
 async def todos(request: Request, id: int):
 
     # note passing of parameters to the page
     return templates.TemplateResponse("todo/partials/todo_update_form.html", {"request": request, "todo": getTodo(id) })
+
+@router.get("/filter/{filter}", response_class=HTMLResponse)
+async def todos(request: Request, filter: str):
+
+    # note passing of parameters to the page
+    return templates.TemplateResponse("todo/partials/todo_list.html", {"request": request, "todoList": getAllTodos(), "filter": filter   })
+
+
 
 @router.post("/")
 def add_item(request: Request, item: str = Form(...)):

@@ -7,7 +7,7 @@ todos_list = []
 # define some sample data to display
 t0 = ToDo(id=1, details="Add my 2 questions to PeerWise, then answer 10 leaving feedback.")
 t1 = ToDo(id=2, details="Watch week 4 lab video.")
-t2= ToDo(id=3, details="Complete week 4 lab and push to GitHub Classroom.")
+t2 = ToDo(id=3, details="Complete week 4 lab and push to GitHub Classroom.")
 t3 = ToDo(id=4, details="Learn the parts of Python I have forgotten.")
 
 # add the same objects to the list

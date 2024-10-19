@@ -1,4 +1,7 @@
 <!-- loop through the list of todos and display the details for each todo in the list -->
+<h5>Filtered: {{ filter }}</h5>
 {% for todo in todoList %}
-    {% include "/todo/partials/todo_li.html" ignore missing with context %}
+    {% if filter == "all" or ( filter == "done" and  todo.completed) or (filter == "todo" and  not todo.completed) %}
+        {% include "/todo/partials/todo_li.html" ignore missing with context %}
+    {% endif %}
 {% endfor %}

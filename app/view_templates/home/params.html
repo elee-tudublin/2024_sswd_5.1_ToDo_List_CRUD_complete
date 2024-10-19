@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% include "../common/head.html" ignore missing with context %}
+    {% include "./common/head.html" ignore missing with context %}
     <title>Parametrs</title>
 </head>
 
 <body>
     <!-- include navbar from partials -->
-    {% include "../common/nav.html" ignore missing with context %}
+    {% include "./common/nav.html" ignore missing with context %}
 
     <!-- Show welcome message -->
     <h1>Welcome {{ name }}</h1>
@@ -21,7 +21,7 @@
     {% endif %}
 
     <!-- Load common CSS and JS -->
-    {% include "../common/dependencies.html" ignore missing with context %}
+    {% include "./common/dependencies.html" ignore missing with context %}
 </body>
 
 </html>

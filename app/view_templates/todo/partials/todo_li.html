@@ -6,10 +6,10 @@
       <button type="button" class="btn btn-sm btn-warning" hx-target="closest li" hx-swap="outerHTML"
         hx-get="/todo/update/{{ todo.id }}" hx-trigger="click"><i class="bi bi-pencil-square"></i>
       </button>
-      <button type="button" class="btn btn-sm btn-danger" hx-target="#todoList" hx-swap="innerHTML"
+      <button type="button" hx-confirm="confirm delete if id {{ todo.id }}" class="btn btn-sm btn-danger" hx-target="#todoList" hx-swap="innerHTML"
         hx-delete="/todo/{{  todo.id }}" hx-trigger="click"><i class="bi bi-trash"></i>
       </button>
     </p>
   </div>
-  <span class="badge text-bg-primary rounded-pill">completed: {{ todo.completed }}</span>
+  <span class="badge {% if todo.completed %} text-bg-success {% else %} text-bg-primary {% endif %}}  rounded-pill">completed: {{ todo.completed }}</span>
 </li>
