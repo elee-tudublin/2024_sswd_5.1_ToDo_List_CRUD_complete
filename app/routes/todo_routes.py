@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 # import service functions
 from app.services.todo_service import getAllTodos, getTodo, addTodo, updateTodo, deleteTodo
 
-from app.models.todo import ToDo
+from app.models.todo import *
 
 router = APIRouter()
 
@@ -37,10 +37,11 @@ async def todos(request: Request, filter: str):
 
 
 @router.post("/")
-def add_item(request: Request, item: str = Form(...)):
+def add_item(request: Request, details: Annotated[str, Form()]):
 
-    # get item value from the form POST data
-    new_todo = addTodo(item)
+    # get details value from the form POST data
+    # only details for the new todo is required as there is no id and it is not completed
+    new_todo = addTodo(details)
     return templates.TemplateResponse("todo/partials/todo_li.html", {"request": request, "todo": new_todo})
 
 @router.put("/")
@@ -53,4 +54,4 @@ def update_item(request: Request, id: Annotated[int, Form()], details: Annotated
 @router.delete("/{id}")
 def delete_item(request: Request, id: int):
     deleteTodo(id)
-    return templates.TemplateResponse("todo/partials/todo_list.html", {"request": request, "todoList": getAllTodos() })
+    return templates.TemplateResponse("todo/partials/todo_list.html", {"request": request, "todoList": getAllTodos(), "filter": "all" })

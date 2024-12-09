@@ -35,21 +35,19 @@ def dataAddTodo(details : str) :
     # return the new todo object
     return new_todo
 
-
-def dataUpdateTodo(todo) :
-    print(todo.model_dump())
-    todos_list[todo.id - 1] = todo
-    return todo
-    
+def dataUpdateTodo(up_todo) :
+    for index, todo in enumerate(todos_list) :
+        if todo.id == up_todo.id :
+            todos_list[index] = up_todo
+            return up_todo   
 
 def dataDeleteTodo(id : int) :
-    result : bool = True
-    try:
-        del todos_list[id - 1]
-        print('deleted item with index: ' + str(id-1))
-    except:
-        print('error deleting item with index: ' + str(id-1))
-        result = False
+    result : bool = False
 
+    # find the product if it exists then delete
+    for index, todo in enumerate(todos_list) :
+        if (todo.id == id) :
+            del todos_list[index]
+            result = True
+    
     return result
-
